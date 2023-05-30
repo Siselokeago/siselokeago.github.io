@@ -1,3 +1,45 @@
 body{
-    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    font-family: 'Inter';
+    background-color: #F3F5FC;
 }
+main{
+    display: flex;
+    width: 100%;
+    padding: 40px;
+}
+main{
+    display: grid;
+    grid-template-columns: 1fr 6fr 3fr;
+    grid-template-rows: 100vh;
+    padding: 40px;
+}
+#logo{
+    /* en padding 36.35% es el porcentaje para que en una pantalla
+    de 1440px de ancho el logo tenga un padding de 84px a la izquierda */
+    padding-left: 36.35%;
+    width: 3vw;
+    max-width: 42px;
+    min-width: 30.43px;
+}
+.outtext{
+    background-color: white;
+    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+    border-radius: 32px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:16px;
+    
+    text-align: center;
+    
+}
+#muneco{
+    padding: 0 32px;
+}
+.outtext h1{
+    padding-top: 16px;
+
+}
+
