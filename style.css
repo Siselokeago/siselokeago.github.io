@@ -1,45 +1,269 @@
+/* {
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.15) !important; 
+}*/
 body{
-    display: flex;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     background-color: #F3F5FC;
 }
-main{
-    display: flex;
-    width: 100%;
-    padding: 40px;
-}
+
 main{
     display: grid;
-    grid-template-columns: 1fr 6fr 3fr;
-    grid-template-rows: 100vh;
+    grid-template-columns: 1fr max-content;
+    height: 92vh;
     padding: 40px;
 }
+.order-box{
+    display: grid;
+    grid-template-rows: max-content 1fr;
+}
+/* LOGO */
+.logo-box{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    max-width: 86px;
+}
 #logo{
-    /* en padding 36.35% es el porcentaje para que en una pantalla
+    /* en margin 32.36% es el porcentaje para que en una pantalla
     de 1440px de ancho el logo tenga un padding de 84px a la izquierda */
-    padding-left: 36.35%;
-    width: 3vw;
+    margin-left: 44px;
+    width: 2.223vw;
     max-width: 42px;
     min-width: 30.43px;
 }
+/* BLOQUE DE TEXTO A ENCRIPTAR Y BOTONES*/
+.intext{
+    display: grid;
+    grid-template-rows: 1fr max-content;
+    padding-left: 10%;
+}
+#encriptar{
+    place-self: start;
+    width: calc(46vw -  40px);
+    height: calc(100% - 87px);
+    margin-top: 80px;
+    background: none;
+    resize: none;
+    border: hidden;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 150%;
+    color: #0A3871;
+}
+#encriptar::placeholder{
+    color: #0A3871;
+}
+#encriptar:focus-visible{
+    outline: none;
+}
+.crypting{
+    width: calc(46vw -  40px);
+    display: grid;
+    grid-template-rows: max-content max-content;
+    gap: 16px;
+
+
+}
+.crypting p{
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    gap: 8px;
+}
+.cryptbuttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+.cryptbuttons button{
+    border-radius: 24px;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 24px;
+}
+.cryptbuttons #crypt{
+    color: #FFFFFF;
+    border: 1px solid #0A3871;
+    background: #0A3871;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+}
+.cryptbuttons #decrypt{
+    background: #D8DFE8;
+    border: 1px solid #0A3871;
+    color: #0A3871;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+}
+
+/* BLOQUE DEL TEXTO ENCRIPTADO*/
 .outtext{
     background-color: white;
     box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
     border-radius: 32px;
+    max-width: 533px;
+    width: 35vw;
+    min-width: 300px;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap:16px;
-    
+    place-content: center;
+    gap:1%;
     text-align: center;
     
 }
-#muneco{
-    padding: 0 32px;
-}
-.outtext h1{
+.texto{
     padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+    margin: 0 8.37%;
+    word-wrap: break-word;
 
 }
+.texto h1{
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(24px,1.8vw,32px);
+    line-height: 120%;
+    color: #343A40;
+    max-width: 448px;
+}
+.texto p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(16px,1.8vw,32px);
+    line-height: 150%;
+    color: #495057;
+    max-width: 448px;
+    
+}
+#copiar{
+    border-radius: 24px;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 24px;
+    background: #D8DFE8;
+    border: 1px solid #0A3871;
+    color: #0A3871;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    width: 100%;
+}
+.copiar{
+    display: none;
+    width: 100%;
+    
+}
+#muneco{
+    
+    width: 23.334vw;
+    min-width: 300px;
+    max-width: 400px;
+}
 
+
+@media screen and (max-width:768px) {
+    #logo{
+        margin: 0;
+    }
+    main{
+        grid-template-columns: none;
+        grid-template-rows: 1fr max-content;
+        height: 92vh;
+    }
+    .intext{
+        padding: 0;
+    }
+    #encriptar{
+        margin-left: 0;
+        width: 100%;
+    }
+    .crypting{
+        width: 100%;
+        margin: 0;
+    }
+    .outtext{
+        max-width: none;
+        width: auto;
+        padding: 20px;
+
+    }
+    .outtext .texto{
+        padding: 0;
+    }
+    .texto p{
+        font-style: normal;
+        font-weight: 400;
+        
+        line-height: 150%;
+        color: #495057;
+        max-width: 448px;
+    }
+    #muneco{
+        display: none;        
+    }
+}
+@media screen and (max-width:415px) {
+    #logo{
+        margin: 0;
+    }
+    main{
+        grid-template-columns: none;
+        grid-template-rows: 1fr max-content;
+        height: 92vh;
+    }
+    .intext{
+        padding: 0;
+    }
+    #encriptar{
+        margin-left: 0;
+        width: 100%;
+    }
+    .crypting{
+        width: 100%;
+        margin: 0;
+        
+    }
+    .cryptbuttons{
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
+    .outtext{
+        max-width: none;
+        width: auto;
+        padding: 20px;
+
+    }
+    .outtext .texto{
+        padding: 0;
+    }
+    
+    .texto p{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        color: #495057;
+        max-width: 448px;
+    }
+    #muneco{
+        display: none;        
+    }
+}

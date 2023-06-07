@@ -2,31 +2,163 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
         <title>Challenge encriptador</title>
         <link rel="stylesheet" href="reset.css/reset.css">
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-        <link rel="icon" href="/imagenes/logo.png">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <main>
-            
-                <img id="logo" src="/imagenes/logo.png">
-            
-            <section class="intext">
+            <div class="order-box">
 
-            </section>
+                <div class="logo-box">
+                    <img id="logo" src="/imagenes/logo.png">
+                </div>
                 
-            <section class="outtext">
-                <img id="muneco" src="imagenes/muneco.png">
-                <h1>Ningún mensaje fue encontrado</h1>
-                <p>Ingresa el texto que desees encriptar o desencriptar.</p>
-            </section>
+                
+                <section class="intext">
+                    <textarea id="encriptar" type="text" placeholder="Ingrese el texto aqui" autofocus></textarea>
+                    
+                    <section class="crypting">
+                        
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#495057" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                            </svg>
+                            Solo letras minúsculas y sin acentos. Selecciona el modo abajo realiza las acciones en tiempo real.
+                        </p>
 
+                        <section class="cryptbuttons">
+
+                            <button id="crypt">Encriptar</button>
+                            <button id="decrypt">Desencriptar</button>
+
+                        </section>
+
+                    </section>
+                    
+                </section>
+
+            </div>    
+            <section class="outtext">
+                <div class="copiar">
+                    <button id="copiar">Copiar</button>
+                </div>
+                
+                <div class="munecobox">
+                    <img id="muneco" src="imagenes/muneco.png">
+                </div>
+                <div class="texto">
+                    <h1>Ningún mensaje fue encontrado</h1>
+                    <p>Ingresa el texto que desees encriptar o desencriptar.</p>
+                    <p></p>
+                </div>
+                
+            </section>
+            <script>
+                var modocrypt = true;
+
+                var textinput = document.querySelector("#encriptar");
+
+                const copiar = document.querySelector("#copiar")
+                const desencriptar = document.querySelector("#decrypt");
+                const encriptar = document.querySelector("#crypt")
+
+                const textbox = document.getElementsByClassName("texto")[0];
+                const imgcryptedbox = document.getElementsByClassName("munecobox")[0];
+                const munecodef = document.getElementById("muneco");
+                const outtext = document.getElementsByClassName("outtext")[0];
+                function switchdesign(){
+                    /* condicional para mostrar el diseño inicial
+                       al estar vacío */
+                    if (textinput.value==""){
+                        copiar.style.background="";
+                        copiar.style.color="";
+                        copiar.innerHTML = "Copiar";
+
+                        outtext.firstElementChild.style.display = "none";
+                        outtext.style.textAlign ="center";
+                        outtext.style.placeItems = "center";
+                        outtext.style.justifyContent = "center"; 
+                        imgcryptedbox.style.display = "initial";
+                        textbox.children[1].style.display = "initial";
+                        textbox.firstElementChild.style.display="initial";
+                    }
+                    else{
+                        outtext.firstElementChild.style.display = "block";
+                        outtext.style.textAlign ="left";
+                        textbox.lastElementChild.style.color = "#495057";
+                        textbox.lastElementChild.style.fontSize = "24px";
+                        outtext.style.alignItems ="flex-start";
+                        outtext.style.justifyContent = "flex-start";
+                        imgcryptedbox.style.display = "none";
+                        textbox.children[1].style.display = "none";
+                        textbox.firstElementChild.style.display="none";
+                    }
+                    crypting();
+                }
+                function crypting(){
+                    /* Condicional para encriptar o desencriptar*/
+                    if (modocrypt==true){
+                        textbox.lastElementChild.innerHTML= textinput.value
+                                                            .replaceAll("e","enter")
+                                                            .replaceAll("i","imes")
+                                                            .replaceAll("a","ai")
+                                                            .replaceAll("o","ober")
+                                                            .replaceAll("u","ufat");
+                    }
+                    else{
+                        textbox.lastElementChild.innerHTML= textinput.value 
+                                                            .replaceAll("enter","e")
+                                                            .replaceAll("imes","i")
+                                                            .replaceAll("ai","a")
+                                                            .replaceAll("ober","o")
+                                                            .replaceAll("ufat","u");
+                    }
+                }
+                copiar.onclick = function Copiando(){
+                        copiar.style.background="#0A3871";
+                        copiar.style.color="white";
+                        copiar.innerHTML = "¡Copiado!";
+                        navigator.clipboard.writeText(textbox.lastElementChild.innerHTML);
+                    };
+                encriptar.onclick = function Encriptando(){
+                    modocrypt = true;
+                    copiar.style.background="";
+                    copiar.style.color="";
+                    copiar.innerHTML = "Copiar";
+
+                    encriptar.style.background = "#0A3871";
+                    desencriptar.style.background= "#D8DFE8";
+                    encriptar.style.color = "white";
+                    desencriptar.style.color = "#0A3871";
+                    textbox.lastElementChild.innerHTML = "";
+                    textinput.value = "";
+                    switchdesign();
+                };
+                desencriptar.onclick = function Desencriptando(){
+                    modocrypt = false;
+                    copiar.style.background="";
+                    copiar.style.color="";
+                    copiar.innerHTML = "Copiar";
+
+                    encriptar.style.background = "#D8DFE8";
+                    desencriptar.style.background= "#0A3871";   
+                    encriptar.style.color = "#0A3871";
+                    desencriptar.style.color = "white"; 
+                    textbox.lastElementChild.innerHTML = "";
+                    textinput.value = "";
+                    switchdesign();        
+                };
+                textinput.oninput = switchdesign;
+
+
+                
+            </script>
         </main>
     </body>
 </html>

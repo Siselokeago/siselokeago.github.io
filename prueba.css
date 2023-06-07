@@ -1,0 +1,102 @@
+/* {
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.15) !important; 
+}*/
+body{
+    font-family: 'Inter', sans-serif;
+    background-color: #F3F5FC;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    grid-template-rows: 92vh;
+    padding: 40px;
+}
+/* LOGO */
+.logo-box{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    max-width: 86px;
+}
+#logo{
+    /* en margin 32.36% es el porcentaje para que en una pantalla
+    de 1440px de ancho el logo tenga un padding de 84px a la izquierda */
+    margin-left: 44px;
+    width: 2.223vw;
+    max-width: 42px;
+    min-width: 30.43px;
+}
+/* BLOQUE DE TEXTO A ENCRIPTAR*/
+.intext{
+    
+}
+
+/* BLOQUE DEL TEXTO ENCRIPTADO*/
+.outtext{
+    background-color: white;
+    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+    border-radius: 32px;
+    max-width: 533px;
+
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+   
+    gap:1%;
+    
+    text-align: center;
+    
+}
+.texto{
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 8.37%;
+}
+.texto h1{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.7vw;
+    line-height: 120%;
+    color: #343A40;
+    max-width: 448px;
+}
+.texto p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.11vw;
+    line-height: 150%;
+    color: #495057;
+    max-width: 448px;
+}
+#muneco{
+    
+    width: 23.334vw;
+    max-width: 400px;
+}
+
+
+@media screen and (max-width:768px) {
+    main{
+        grid-template-columns: none;
+        grid-template-rows: max-content 1fr max-content;
+        height: 92vh;
+    }
+    .outtext{
+        max-width: none;
+        
+        padding: 20px;
+
+    }
+    .outtext .texto{
+        padding: 0;
+    }
+    #muneco{
+        display: none;        
+    }
+}
+
