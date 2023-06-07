@@ -103,8 +103,15 @@
                 }
                 function crypting(){
                     /* Condicional para encriptar o desencriptar*/
-                    if (modocrypt==true){
-                        textbox.lastElementChild.innerHTML= textinput.value
+                    textopros = textinput.value
+                            .replace(/[^a-z0-9 ,.]/g,"");
+                    if (textopros!=textinput.value){
+                        copiar.style.background="red";
+                        copiar.style.color="white";
+                        copiar.innerHTML = "Texto inválido: Mayúsculas, tíldes, Caracteres especiales.";
+                    }
+                    if (modocrypt==true){  
+                        textbox.lastElementChild.innerHTML= textopros
                                                             .replaceAll("e","enter")
                                                             .replaceAll("i","imes")
                                                             .replaceAll("a","ai")
@@ -112,13 +119,14 @@
                                                             .replaceAll("u","ufat");
                     }
                     else{
-                        textbox.lastElementChild.innerHTML= textinput.value 
+                        textbox.lastElementChild.innerHTML= textopros
                                                             .replaceAll("enter","e")
                                                             .replaceAll("imes","i")
                                                             .replaceAll("ai","a")
                                                             .replaceAll("ober","o")
                                                             .replaceAll("ufat","u");
                     }
+                    
                 }
                 copiar.onclick = function Copiando(){
                         copiar.style.background="#0A3871";
